@@ -1,0 +1,31 @@
+<div class="course-selection">
+    <div class="course-selection__header">
+        <h3 class="course-selection__header__title">
+            Selecciona Cursos (3 créditos cada uno)
+        </h3>
+        <div class="course-selection__header__information">
+            <span class="course-selection__header__information__summary">
+                {{ selectedCount }} de 3 seleccionados
+            </span>
+            <span class="course-selection__header__information__credits">
+                {{ selectedCredits }} / 9 créditos
+            </span>
+        </div>
+    </div>
+    <div class="course-selection__grid">
+        @for (course of courses; track course) {
+        <div class="course-selection__card" [class.course-selection__card--selected]="isSelected(course)"
+            (click)="toggleSelection(course)">
+            <div class="course-selection__icon"></div>
+            <h4 class="course-selection__name">{{ course.name }}</h4>
+            <p class="course-selection__professor">{{ course.professor }}</p>
+            <div class="course-selection__check" *ngIf="isSelected(course)"></div>
+        </div>
+        }
+    </div>
+    <div class="course-selection__buttons">
+     <button class="course-selection__buttons__button">
+      Crear Horario
+     </button>
+    </div>
+</div>
