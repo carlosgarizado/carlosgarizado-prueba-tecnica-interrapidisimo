@@ -1,0 +1,28 @@
+.course-table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .course-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .course-table th, .course-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .course-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .no-data {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+  }
+  

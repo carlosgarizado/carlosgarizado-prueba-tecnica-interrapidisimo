@@ -24,6 +24,11 @@ export class Login {
     });
   }
 
+  ngOnInit(): void {
+    this.auth.logout();
+    this.toastr.warning('Por favor, lea el documento README.md');
+  }
+
   getErrorMessage(controlName: string): string | null {
     const control = this.loginForm.get(controlName);
     if (control?.touched && control.errors) {
@@ -36,14 +41,18 @@ export class Login {
 
   onSubmit(): void {
     if (this.loginForm.invalid) return;
-
+  
     const data: LoginRequest = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     };
-
+  
     this.auth.login(data).subscribe({
       next: (resp: LoginResponse) => {
+        if (resp.authToken) {
+          localStorage.setItem('authToken', resp.authToken);
+        }
+  
         this.success = true;
         this.error = null;
         this.router.navigate(['/home']);
@@ -55,9 +64,9 @@ export class Login {
       }
     });
   }
+  
 
   goRegister(){
-    console.log(" entra")
     this.router.navigate(['/registro']);
   }
 }

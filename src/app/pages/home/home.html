@@ -1,4 +1,7 @@
 <div  class="container-home">
-    <app-course></app-course>
-    <app-list-of-classes></app-list-of-classes>
+    <app-course  (coursesSelected)="handleCourse($event)"></app-course>
+    <div>
+        <app-list-of-classes [selectedCourses]="selectedCourses"></app-list-of-classes>
+        <app-course-table [courses]="selectedCourses"></app-course-table>
+    </div>
 </div>

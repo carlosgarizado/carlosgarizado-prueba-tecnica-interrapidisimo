@@ -1,5 +1,5 @@
 .course-selection {
-    max-width: 800px;
+    width: 400px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     &__header {
@@ -91,6 +91,20 @@
          border-radius: 6px;
          background-color: #FFF59D;
          border: none;
+
+         &:hover{
+            background-color: #FFEB3B;
+          }
+        
+          &:disabled {
+            background-color: #E0E0E0; 
+            color: #9E9E9E;
+            cursor: not-allowed;
+            opacity: 0.8;
+          }
         }
     }
+    @media (max-width: 1054px) {
+        width: 100%;
+      }
 }

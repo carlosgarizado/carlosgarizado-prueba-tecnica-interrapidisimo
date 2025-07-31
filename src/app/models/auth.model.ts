@@ -17,7 +17,7 @@ export interface LoginResponse {
   authToken: string;
 }
 
-export interface Usuario {
+export interface User {
   id: number;
   name: string;
   email: string;

@@ -1,6 +1,5 @@
 interface Course {
-    name: string;
-    icon: string;
-    students: string[]; 
-  }
-  
+  name: string;
+  icon: string;
+  students: string[];
+}

@@ -1,31 +1,43 @@
 <div class="class-list">
-    <h2 class="title"><i class="fas fa-users"></i> Lista de Clases</h2>
-    <p class="subtitle">Mira quién está registrado en cada curso. Actualizado en tiempo real.</p>
-  
-    <ul class="course-list">
-      @for (course of courses; track course.name) {
-        <li class="course-item">
-          <div class="course-header" (click)="toggle(course.name)">
-            <i class="fas" [ngClass]="course.icon"></i>
-            <span class="course-name">{{ course.name }}</span>
-            <span class="students-count">{{ course.students.length }} Estudiantes</span>
-            <i class="fas" [ngClass]="expandedCourse === course.name ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+  <h2 class="title">
+    <i class="fas fa-users"></i> Lista de Clases
+  </h2>
+  <p class="subtitle">Mira quién está registrado en cada curso. Actualizado en tiempo real.</p>
+
+  <ul class="course-list">
+    @for (course of courses; track course.name) {
+      <li class="course-item">
+        <div class="course-header" (click)="toggle(course.name)">
+          <i class="fas" [ngClass]="course.icon"></i>
+          <span class="course-name">{{ course.name }}</span>
+          <span class="students-count">{{ course.students.length }} Estudiantes</span>
+          <i class="fas" [ngClass]="expandedCourse === course.name ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </div>
+
+        @if (expandedCourse === course.name) {
+          <div class="course-body">
+            @if (course.students.length === 0) {
+              <p class="no-students">Aún no hay estudiantes registrados para este curso.</p>
+            } @else if (userIsEnrolled(course.name)) {
+              <ul class="student-list">
+                @for (student of course.students; track student) {
+                  <li>
+                    <i class="fas fa-user"></i>
+                    <span [ngClass]="{'current-user': student === user?.name}">
+                      {{ student }}
+                      @if (student === user?.name) {
+                        <strong>(Tú)</strong>
+                      }
+                    </span>
+                  </li>
+                }
+              </ul>
+            } @else {
+              <p class="no-students">Solo puedes ver estudiantes de los cursos que estás matriculado.</p>
+            }
           </div>
-  
-          @if (expandedCourse === course.name) {
-            <div class="course-body">
-              @if (course.students.length === 0) {
-                <p class="no-students">Aún no hay estudiantes registrados para este curso.</p>
-              } @else {
-                <ul class="student-list">
-                  @for (student of course.students; track student) {
-                    <li>{{ student }}</li>
-                  }
-                </ul>
-              }
-            </div>
-          }
-        </li>
-      }
-    </ul>
-  </div>  
+        }
+      </li>
+    }
+  </ul>
+</div>

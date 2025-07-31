@@ -8,7 +8,7 @@
                 {{ selectedCount }} de 3 seleccionados
             </span>
             <span class="course-selection__header__information__credits">
-                {{ selectedCredits }} / 9 créditos
+                 {{ selectedCredits }} / 9 créditos 
             </span>
         </div>
     </div>
@@ -24,7 +24,7 @@
         }
     </div>
     <div class="course-selection__buttons">
-     <button class="course-selection__buttons__button">
+     <button (click)="sendCourse()" class="course-selection__buttons__button" [disabled]="this.selectedCourses.length < 3">
       Crear Horario
      </button>
     </div>

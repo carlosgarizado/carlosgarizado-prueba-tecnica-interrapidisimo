@@ -1,59 +1,79 @@
-# InterrapidisimoApp
+Alcance del proyecto
+Este proyecto se centra exclusivamente en el Frontend.
+No incluye lógica de backend ni base de datos, por lo que la evaluación debe realizarse únicamente sobre la implementación en Angular, sus buenas prácticas, estructura de componentes y calidad del código.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+es poisbles que los endpoint fallen porque no soy tan experto pero pedes recargar la pagina
 
-## Development server
+Este proyecto es una aplicación frontend en Angular que permite a un usuario:
 
-To start a local development server, run:
+Registrarse y crear una cuenta.
 
-```bash
-ng serve
-```
+Iniciar sesión con credenciales de usuario.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Seleccionar materias (máximo 3) y ver información de profesores y otros estudiantes.
 
-## Code scaffolding
+Proteger rutas sensibles usando Guards para mayor seguridad.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+Características principales
+Registro e inicio de sesión
+Los usuarios deben crear una cuenta proporcionando correo electrónico y contraseña.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Una vez registrado, el usuario puede iniciar sesión y acceder a la vista protegida /home.
 
-```bash
-ng generate --help
-```
+Seguridad con Guards
+Se implementa un AuthGuard que:
 
-## Building
+Bloquea el acceso a rutas protegidas si no existe un token de autenticación.
 
-To build the project run:
+Redirige al usuario al /login si intenta acceder sin iniciar sesión.
 
-```bash
-ng build
-```
+Mejora la protección de la aplicación asegurando que solo usuarios autenticados puedan navegar en áreas privadas.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Selección de materias
+El usuario puede seleccionar hasta 3 cursos de una lista disponible.
 
-## Running unit tests
+Validación para:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+No repetir materias del mismo profesor.
 
-```bash
-ng test
-```
+Mostrar el nombre del usuario y los demás estudiantes que comparten clase.
 
-## Running end-to-end tests
+Uso de CSS y estilos(proposito)
+La aplicación está diseñada siguiendo buenas prácticas de estilos:
 
-For end-to-end (e2e) testing, run:
+CSS en cascada: estilos globales aplicados a toda la aplicación.
 
-```bash
-ng e2e
-```
+Cascada anidada: estructura jerárquica para componentes con SCSS (mejor legibilidad).
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Metodología BEM: convenciones de nombres de clases (bloque__elemento--modificador) para mantener el código limpio y escalable.
 
-## Additional Resources
+Tipado en TypeScript
+Se utilizan interfaces y tipos estrictos para mejorar la seguridad y calidad del código:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+Buenas prácticas
+Separación de responsabilidades:
+Servicios (AuthService, SubjectService) para manejar API y lógica de autenticación.
+
+Uso de Guards:
+Seguridad implementada a nivel de rutas para controlar acceso.
+
+Validaciones en frontend:
+Límite de selección de cursos, verificación de profesor duplicado.
+
+Tipado estricto:
+Interfaces y types en todo el proyecto.
+
+Estructura modular:
+Componentes reutilizables (CourseTable, ListOfClasses, CourseSelection).
+
+Metodología BEM en CSS:
+Código escalable y mantenible.
+
+Resumen
+Registro → Inicio de sesión → Selección de materias → Guard para rutas seguras.
+
+Buenas prácticas en seguridad, CSS, tipado y arquitectura.
+
+Proyecto solo Frontend, evaluable por calidad de implementación y organización.

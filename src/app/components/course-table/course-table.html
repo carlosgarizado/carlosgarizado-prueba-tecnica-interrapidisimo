@@ -1,0 +1,28 @@
+<div class="course-table-container">
+  <table class="course-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th >Materia</th>
+        <th>Profesor</th>
+        <th>Créditos</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (courses.length > 0) {
+        @for (course of courses; track course.id; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.professor }}</td>
+            <td>{{ course.credits }}</td>
+          </tr>
+        }
+      } @else {
+        <tr>
+          <td colspan="4" class="no-data">No hay materias asignadas</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

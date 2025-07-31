@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
   
     .register-container {
       width: 500px;
@@ -90,6 +91,31 @@
             text-decoration: underline;
           }
         }
+      }
+      
+      
+    }
+    .git-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #24292e;
+      color: #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-size: 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      z-index: 1000;
+    
+      &:hover {
+        transform: scale(1.1);
+        background-color: #444;
       }
     }
   }
